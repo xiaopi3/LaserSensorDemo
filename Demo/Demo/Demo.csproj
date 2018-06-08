@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SCIP_library">
-      <HintPath>..\..\..\..\北京曲线\日本北阳\Urg_cs_sample\get_distance_ethernet\bin\Debug\SCIP_library.dll</HintPath>
+      <HintPath>C:\Users\xiaopi3\OneDrive\中转站\北京项目组\Urg_cs_sample\get_distance_ethernet\bin\Debug\SCIP_library.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -64,6 +64,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Data.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

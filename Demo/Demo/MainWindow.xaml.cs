@@ -12,9 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Net.Sockets;
 
 using SCIP_library;
+using System.Net.Sockets;
+using System.Collections.Generic;
 
 namespace Demo
 {
@@ -24,28 +25,32 @@ namespace Demo
     public partial class MainWindow : Window
     {
         NetworkStream stream = null;
+        TcpClient urg = null;
+        List<Data> data = null;
+
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void bt_Click_Init(object sender, RoutedEventArgs e)
-        {
-            string ip=IPAddr.Text.Trim();
-            int port=int.Parse(Port.Text.Trim());
-            
-            TcpClient urg = new TcpClient();
-            urg.Connect(ip, port);
-            stream = urg.GetStream();
+            listViewData.ItemsSource = data;
         }
 
         private void bt_Click_Start(object sender, RoutedEventArgs e)
         {
-            int start_step;
-            int end_step;
-            int GET_NUM;
+            int start_step = 540 - (int)(slider1.Value / 0.25);
+            int end_step = 540 + (int)(slider2.Value / 0.25);
+            int GET_NUM = int.Parse(ScanNum.Text.Trim());
+
+            data.Clear();
+            data = new System.Collections.Generic.List<Data>();
+
             try
             {
+                string ip = IPAddr.Text.Trim();
+                int port = int.Parse(Port.Text.Trim());
+                urg = new TcpClient();
+                urg.Connect(ip, port);
+                stream = urg.GetStream();
+
                 write(stream, SCIP_Writer.SCIP2());// 切换到SCIP2.0状态
                 read_line(stream); // ignore echo back 读一行，并抛弃返回值
                 write(stream, SCIP_Writer.MD(start_step, end_step));//写入初始配置参数
@@ -58,31 +63,28 @@ namespace Demo
                     string receive_data = read_line(stream);
                     if (!SCIP_Reader.MD(receive_data, ref time_stamp, ref distances))
                     {
-                        Console.WriteLine(receive_data);
+                        MessageBox.Show("错误数据：" + receive_data);
+                        
                         break;// 此时收到的数据开头非MD且二位非00或99，则数据出错，输出数据到屏幕，并结束循环
                     }
                     if (distances.Count == 0)
                     {
-                        Console.WriteLine(receive_data);
+                        //Console.WriteLine(receive_data);
                         continue;// 同上，此时没有接收到距离数据，输出到屏幕，继续下次循环
                     }
                     // show distance data
-                    Console.WriteLine("time stamp: " + time_stamp.ToString() + " distance[540] : " + distances[40].ToString());
+                    for (int j = 0; j < distances.Count; j++)
+                    {
+                        data.Add(new Data(j, time_stamp, distances[j]));
+                    }
+                    //listViewData.Items.Refresh();
+                    //Console.WriteLine("time stamp: " + time_stamp.ToString() + " distance[540] : " + distances[40].ToString());
                 }
-                write(stream, SCIP_Writer.QT());    // stop measurement mode 关闭激光，禁用测量状态
-                read_line(stream); // ignore echo back
-                stream.Close();
-                urg.Close();
+               
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
-            }
-            finally
-            {
-                Console.WriteLine("Press any key.");
-                Console.ReadKey();
+                MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
             }
         }
 
@@ -138,5 +140,21 @@ namespace Demo
                 return false;
             }
         }
+
+        private void bt_Click_End(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                write(stream, SCIP_Writer.QT());    // stop measurement mode 关闭激光，禁用测量状态
+                read_line(stream); // ignore echo back
+                stream.Close();
+                urg.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
+            }
+        }
+        
     }
 }
