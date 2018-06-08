@@ -1,0 +1,13 @@
+D:\Github\LaserSensorDemo\Demo\Demo\bin\Debug\Demo.exe.config
+D:\Github\LaserSensorDemo\Demo\Demo\bin\Debug\Demo.exe
+D:\Github\LaserSensorDemo\Demo\Demo\bin\Debug\Demo.pdb
+D:\Github\LaserSensorDemo\Demo\Demo\obj\Debug\Demo.csprojResolveAssemblyReference.cache
+D:\Github\LaserSensorDemo\Demo\Demo\obj\Debug\MainWindow.baml
+D:\Github\LaserSensorDemo\Demo\Demo\obj\Debug\MainWindow.g.cs
+D:\Github\LaserSensorDemo\Demo\Demo\obj\Debug\App.g.cs
+D:\Github\LaserSensorDemo\Demo\Demo\obj\Debug\Demo_MarkupCompile.cache
+D:\Github\LaserSensorDemo\Demo\Demo\obj\Debug\Demo.g.resources
+D:\Github\LaserSensorDemo\Demo\Demo\obj\Debug\Demo.Properties.Resources.resources
+D:\Github\LaserSensorDemo\Demo\Demo\obj\Debug\Demo.csproj.GenerateResource.Cache
+D:\Github\LaserSensorDemo\Demo\Demo\obj\Debug\Demo.exe
+D:\Github\LaserSensorDemo\Demo\Demo\obj\Debug\Demo.pdb
