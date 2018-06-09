@@ -26,3 +26,9 @@ D:\北京项目\LaserSensorDemo\Demo\Demo\obj\Debug\Demo_MarkupCompile.cache
 D:\北京项目\LaserSensorDemo\Demo\Demo\obj\Debug\Demo.g.resources
 D:\北京项目\LaserSensorDemo\Demo\Demo\obj\Debug\Demo.Properties.Resources.resources
 D:\北京项目\LaserSensorDemo\Demo\Demo\obj\Debug\Demo.csproj.GenerateResource.Cache
+D:\北京项目\LaserSensorDemo\Demo\Demo\bin\Debug\OxyPlot.dll
+D:\北京项目\LaserSensorDemo\Demo\Demo\bin\Debug\OxyPlot.Wpf.dll
+D:\北京项目\LaserSensorDemo\Demo\Demo\bin\Debug\OxyPlot.pdb
+D:\北京项目\LaserSensorDemo\Demo\Demo\bin\Debug\OxyPlot.xml
+D:\北京项目\LaserSensorDemo\Demo\Demo\bin\Debug\OxyPlot.Wpf.pdb
+D:\北京项目\LaserSensorDemo\Demo\Demo\bin\Debug\OxyPlot.Wpf.xml

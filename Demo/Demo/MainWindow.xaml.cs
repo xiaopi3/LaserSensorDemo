@@ -15,7 +15,8 @@ using System.Windows.Shapes;
 
 using SCIP_library;
 using System.Net.Sockets;
-using System.Collections.Generic;
+using OxyPlot;
+using OxyPlot.Series;
 
 namespace Demo
 {
@@ -27,6 +28,7 @@ namespace Demo
         NetworkStream stream = null;
         TcpClient urg = null;
         List<Data> data = null;
+        PlotModel SimplePlotModel = null;
 
         public MainWindow()
         {
@@ -40,7 +42,11 @@ namespace Demo
             int end_step = 540 + (int)(slider2.Value / 0.25);
             int GET_NUM = int.Parse(ScanNum.Text.Trim());
 
-            data.Clear();
+            SimplePlotModel = new PlotModel();
+            //线条
+            var lineSerial = new LineSeries() { Title = "距离" };
+            
+            //data.Clear();
             data = new System.Collections.Generic.List<Data>();
 
             try
@@ -60,6 +66,9 @@ namespace Demo
                 long time_stamp = 0;// 时间戳-毫秒
                 for (int i = 0; i < GET_NUM; ++i)
                 {
+                    //每次循环清空图数据
+                    SimplePlotModel.Series.Remove(lineSerial);
+                    lineSerial.Points.Clear();
                     string receive_data = read_line(stream);
                     if (!SCIP_Reader.MD(receive_data, ref time_stamp, ref distances))
                     {
@@ -69,16 +78,17 @@ namespace Demo
                     }
                     if (distances.Count == 0)
                     {
-                        //Console.WriteLine(receive_data);
                         continue;// 同上，此时没有接收到距离数据，输出到屏幕，继续下次循环
                     }
                     // show distance data
                     for (int j = 0; j < distances.Count; j++)
                     {
                         data.Add(new Data(j, time_stamp, distances[j]));
+                        lineSerial.Points.Add(new DataPoint(j, distances[j]));
+                        
                     }
-                    //listViewData.Items.Refresh();
-                    //Console.WriteLine("time stamp: " + time_stamp.ToString() + " distance[540] : " + distances[40].ToString());
+                    listViewData.Items.Refresh();
+                    SimplePlotModel.Series.Add(lineSerial);
                 }
                
             }

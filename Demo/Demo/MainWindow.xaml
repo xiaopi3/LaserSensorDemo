@@ -1,6 +1,7 @@
 ﻿<Window x:Class="Demo.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:oxy="http://oxyplot.org/wpf"
         Title="激光测距" Height="500" Width="525" FontSize="16">
     <Grid>
         <Label Content="传感器IP地址" HorizontalAlignment="Left" Margin="27,28,0,0" VerticalAlignment="Top" FontSize="16"/>
@@ -12,12 +13,16 @@
         <Label Content="右偏置角" HorizontalAlignment="Left" Margin="27,117,0,0" VerticalAlignment="Top"/>
         <Slider x:Name="slider2" IsSnapToTickEnabled="True" HorizontalAlignment="Left" Margin="106,122,0,0" VerticalAlignment="Top" Width="122" Maximum="135" SmallChange="0.25" TickFrequency="0.25"/>
         <Label Content="测量次数" HorizontalAlignment="Left" Margin="277,71,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="ScanNum" HorizontalAlignment="Left" Height="23" Margin="351,75,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="49" FontSize="16"/>
+        <TextBox x:Name="ScanNum" HorizontalAlignment="Left" Height="23" Margin="351,75,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="49" FontSize="16"/>
         <Button Content="启动" HorizontalAlignment="Left" Margin="429,71,0,0" VerticalAlignment="Top" Width="60" Height="26" FontSize="16" Click="bt_Click_Start"/>
         <Button Content="停止" HorizontalAlignment="Left" Margin="429,114,0,0" VerticalAlignment="Top" Width="60" Height="26" FontSize="16" Click="bt_Click_End"/>
+        <Label Content="{Binding Path=Value, ElementName=slider1}" HorizontalAlignment="Left" Margin="226,75,0,0" VerticalAlignment="Top" Width="46" FontSize="14"/>
+        <Label Content="{Binding Path=Value, ElementName=slider2}" HorizontalAlignment="Left" Margin="226,114,0,0" VerticalAlignment="Top" Width="46" FontSize="14"/>
         <TabControl HorizontalAlignment="Left" Height="298" Margin="27,161,0,0" VerticalAlignment="Top" Width="462">
             <TabItem Header="图形">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <oxy:PlotView Model="{Binding Path=SimplePlotModel}"></oxy:PlotView>
+                </Grid>
             </TabItem>
             <TabItem Header="数据">
                 <Grid Background="#FFE5E5E5">
@@ -25,7 +30,7 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="序号" Width="60" DisplayMemberBinding="{Binding Path=Index}"/>
-                                <GridViewColumn Header="时间" Width="60" DisplayMemberBinding="{Binding Path=Time}"/>
+                                <GridViewColumn Header="时间/msec" Width="100" DisplayMemberBinding="{Binding Path=Time}"/>
                                 <GridViewColumn Header="距离/mm" Width="100" DisplayMemberBinding="{Binding Path=Dist}"/>
                             </GridView>
                         </ListView.View>
@@ -33,8 +38,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Label Content="{Binding Path=Value, ElementName=slider1}" HorizontalAlignment="Left" Margin="226,75,0,0" VerticalAlignment="Top" Width="46" FontSize="14"/>
-        <Label Content="{Binding Path=Value, ElementName=slider2}" HorizontalAlignment="Left" Margin="226,114,0,0" VerticalAlignment="Top" Width="46" FontSize="14"/>
+        
 
     </Grid>
 </Window>
