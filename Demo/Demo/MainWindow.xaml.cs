@@ -17,6 +17,7 @@ using SCIP_library;
 using System.Net.Sockets;
 using OxyPlot;
 using OxyPlot.Series;
+using System.Drawing;
 
 namespace Demo
 {
@@ -80,13 +81,32 @@ namespace Demo
                     {
                         continue;// 同上，此时没有接收到距离数据，输出到屏幕，继续下次循环
                     }
-                    // show distance data
+                    //垂直距离
+                    double[] dist = new double[distances.Count];
+                    //水平距离
+                    double[] Xdist = new double[distances.Count];
+                    double L_mid=-1;
+                    // 一次测量中的数据
                     for (int j = 0; j < distances.Count; j++)
                     {
-                        data.Add(new Data(j, time_stamp, distances[j]));
-                        lineSerial.Points.Add(new DataPoint(j, distances[j]));
-                        
+                        //获取所有店的垂直距离
+                        double d = Data.getDist(start_step,j, distances[j]);
+                        data.Add(new Data(j, time_stamp, d));
+                        lineSerial.Points.Add(new DataPoint(j, d));
+                        //单独将垂直距离存到一个数组中
+                        dist[j] = d;
+                        Xdist[j] = Data.getXDist(start_step, j, distances[j]);
+                        //获取中心点直线距离
+                        if (j == start_step)
+                            L_mid = d;
                     }
+                    if (L_mid != -1)
+                    {
+                        PointF p = Data.getXY(L_mid, start_step, dist, Xdist);
+                        PointX.Text = p.X.ToString("2D");
+                        PointY.Text = p.Y.ToString("2D");
+                    }
+                    
                     listViewData.Items.Refresh();
                     SimplePlotModel.Series.Add(lineSerial);
                 }

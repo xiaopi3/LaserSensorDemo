@@ -38,7 +38,11 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        
+        <Label Content="X" HorizontalAlignment="Left" Margin="257,110,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="PointX" HorizontalAlignment="Left" Height="23" Margin="283,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="49" FontSize="16"/>
+        <Label Content="Y" HorizontalAlignment="Left" Margin="338,110,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="PointY" HorizontalAlignment="Left" Height="23" Margin="364,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="49" FontSize="16"/>
+
 
     </Grid>
 </Window>
