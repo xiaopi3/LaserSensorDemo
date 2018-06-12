@@ -32,3 +32,11 @@ D:\北京项目\LaserSensorDemo\Demo\Demo\bin\Debug\OxyPlot.pdb
 D:\北京项目\LaserSensorDemo\Demo\Demo\bin\Debug\OxyPlot.xml
 D:\北京项目\LaserSensorDemo\Demo\Demo\bin\Debug\OxyPlot.Wpf.pdb
 D:\北京项目\LaserSensorDemo\Demo\Demo\bin\Debug\OxyPlot.Wpf.xml
+D:\Github\LaserSensorDemo\Demo\Demo\bin\Debug\OxyPlot.dll
+D:\Github\LaserSensorDemo\Demo\Demo\bin\Debug\OxyPlot.Wpf.dll
+D:\Github\LaserSensorDemo\Demo\Demo\bin\Debug\SCIP_library.dll
+D:\Github\LaserSensorDemo\Demo\Demo\bin\Debug\OxyPlot.pdb
+D:\Github\LaserSensorDemo\Demo\Demo\bin\Debug\OxyPlot.xml
+D:\Github\LaserSensorDemo\Demo\Demo\bin\Debug\OxyPlot.Wpf.pdb
+D:\Github\LaserSensorDemo\Demo\Demo\bin\Debug\OxyPlot.Wpf.xml
+D:\Github\LaserSensorDemo\Demo\Demo\bin\Debug\SCIP_library.pdb

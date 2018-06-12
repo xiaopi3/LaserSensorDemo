@@ -24,14 +24,15 @@ namespace Demo
         {
             int j_currentStep = 540 - (j + startStep);
             double j_currentAngle = j_currentStep * 0.25;
-            return d * Math.Cos(j_currentAngle);
+            double DL = d * Math.Cos(j_currentAngle*3.14159265/180);
+            return DL;
         }
         public static double getXDist(int startStep, int j, long d)
         {
             int j_currentStep = 540 - (j + startStep);
             double j_currentAngle = j_currentStep * 0.25;
-            double XDist = d * Math.Sin(j_currentAngle);
-            return (j + startStep) < 540 ? -XDist : XDist;
+            double XDist = d * Math.Sin(j_currentAngle*3.14159265/180);
+            return -XDist;
         }
         public static PointF getXY(double L_mid,int startStep,double[] dist,double[] XDist)
         {

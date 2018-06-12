@@ -97,14 +97,14 @@ namespace Demo
                         dist[j] = d;
                         Xdist[j] = Data.getXDist(start_step, j, distances[j]);
                         //获取中心点直线距离
-                        if (j == start_step)
+                        if (j == (540-start_step))
                             L_mid = d;
                     }
                     if (L_mid != -1)
                     {
                         PointF p = Data.getXY(L_mid, start_step, dist, Xdist);
-                        PointX.Text = p.X.ToString("2D");
-                        PointY.Text = p.Y.ToString("2D");
+                        PointX.Text = p.X.ToString("F2");
+                        PointY.Text = p.Y.ToString("F2");
                     }
                     
                     listViewData.Items.Refresh();

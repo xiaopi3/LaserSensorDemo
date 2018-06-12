@@ -7,11 +7,11 @@
         <Label Content="传感器IP地址" HorizontalAlignment="Left" Margin="27,28,0,0" VerticalAlignment="Top" FontSize="16"/>
         <TextBox x:Name="IPAddr" HorizontalAlignment="Left" Height="23" Margin="131,32,0,0" TextAlignment="Left" TextWrapping="Wrap" Text="192.168.0.10" VerticalAlignment="Top" Width="120" FontSize="16"/>
         <Label Content="传感器端口" HorizontalAlignment="Left" Margin="261,28,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="Port" HorizontalAlignment="Left" Height="23" Margin="351,31,0,0" TextWrapping="Wrap" Text="10940" VerticalAlignment="Top" Width="49" FontSize="16"/>
+        <TextBox x:Name="Port" HorizontalAlignment="Left" Height="23" Margin="351,31,0,0" TextWrapping="Wrap" Text="10940" VerticalAlignment="Top" Width="62" FontSize="16"/>
         <Label Content="左偏置角" HorizontalAlignment="Left" Margin="27,75,0,0" VerticalAlignment="Top"/>
-        <Slider x:Name="slider1" IsSnapToTickEnabled="True" HorizontalAlignment="Left" Margin="106,80,0,0" VerticalAlignment="Top" Width="122" SmallChange="0.25" Maximum="135" TickFrequency="0.25"/>
+        <Slider x:Name="slider1" IsSnapToTickEnabled="True" HorizontalAlignment="Left" Margin="106,80,0,0" VerticalAlignment="Top" Width="122" SmallChange="0.25" Maximum="135" TickFrequency="0.25" Value="30"/>
         <Label Content="右偏置角" HorizontalAlignment="Left" Margin="27,117,0,0" VerticalAlignment="Top"/>
-        <Slider x:Name="slider2" IsSnapToTickEnabled="True" HorizontalAlignment="Left" Margin="106,122,0,0" VerticalAlignment="Top" Width="122" Maximum="135" SmallChange="0.25" TickFrequency="0.25"/>
+        <Slider x:Name="slider2" IsSnapToTickEnabled="True" HorizontalAlignment="Left" Margin="106,122,0,0" VerticalAlignment="Top" Width="122" Maximum="135" SmallChange="0.25" TickFrequency="0.25" Value="30"/>
         <Label Content="测量次数" HorizontalAlignment="Left" Margin="277,71,0,0" VerticalAlignment="Top" FontSize="16"/>
         <TextBox x:Name="ScanNum" HorizontalAlignment="Left" Height="23" Margin="351,75,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="49" FontSize="16"/>
         <Button Content="启动" HorizontalAlignment="Left" Margin="429,71,0,0" VerticalAlignment="Top" Width="60" Height="26" FontSize="16" Click="bt_Click_Start"/>
