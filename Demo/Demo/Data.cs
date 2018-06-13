@@ -39,7 +39,7 @@ namespace Demo
             double delta = 50;//50mm
             int width=10;//宽度余量-step
             //先往右遍历
-            for (int i = startStep; i < dist.Length-width-1; i++)
+            for (int i = 540-startStep; i < dist.Length-width-1; i++)
             {
                 if (dist[i+1] - dist[i] > delta)
                 {
@@ -50,7 +50,7 @@ namespace Demo
                 }
             }
             //往左遍历
-            for (int i = startStep; i > width + 1; i--)
+            for (int i = 540-startStep; i >= width; i--)
             {
                 if (dist[i] - dist[i - 1] > delta)
                 {
