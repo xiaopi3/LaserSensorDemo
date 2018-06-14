@@ -36,14 +36,14 @@ namespace Demo
         }
         public static PointF getXY(double L_mid,int startStep,double[] dist,double[] XDist)
         {
-            double delta = 50;//50mm
+            double delta = 40;//40mm
             int width=10;//宽度余量-step
             //先往右遍历
             for (int i = 540-startStep; i < dist.Length-width-1; i++)
             {
-                if (dist[i+1] - dist[i] > delta)
+                if (dist[i] - dist[i+1] > delta)
                 {
-                    if (eightInTen(dist, i + 1, 1))//简单健壮性判断
+                    if (true)//简单健壮性判断,取消健壮判断
                     {
                         return new PointF((float)XDist[i + 1], (float)dist[i + 1]);
                     }
@@ -52,9 +52,9 @@ namespace Demo
             //往左遍历
             for (int i = 540-startStep; i >= width; i--)
             {
-                if (dist[i] - dist[i - 1] > delta)
+                if (dist[i - 1] - dist[i] > delta)
                 {
-                    if (eightInTen(dist, i - 1, -1))
+                    if (true)//取消健壮判断
                     {
                         return new PointF((float)XDist[i], (float)dist[i]);
                     }
